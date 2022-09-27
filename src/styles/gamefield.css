@@ -1,0 +1,28 @@
+h2 {
+  color: #A2B8d8;
+}
+
+/* .timer {} */
+
+.field__items {
+  width: 330px;
+  height: 330px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+  margin: 10px auto;
+}
+
+.field__item {
+  height: 90px;
+  width: 90px;
+  list-style: none;
+  border: 1px solid #fff;
+}
+
+/* .details {}
+
+.details__items {}
+
+.details__item {} */

@@ -1,0 +1,13 @@
+/* Components FirstScreen */
+.first__screen {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.first__screen img {
+  width: 80%;
+  max-width: 350px;
+}
