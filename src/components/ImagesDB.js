@@ -2,8 +2,13 @@ export const images = [
   '../images/setting.svg',
   '../images/level.svg',
   '../images/rating.svg',
-  '../images/1.png',
-  '../images/2.png',
-  '../images/3.png',
-  '../images/4.png'
+  '../images/pic01.png',
+  '../images/pic02.png',
+  '../images/pic03.png',
+  '../images/pic04.png',
+  '../images/pic05.png',
+  '../images/pic06.png',
+  '../images/pic07.png',
+  '../images/pic08.png',
+  '../images/pic09.png',
 ];
