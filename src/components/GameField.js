@@ -1,6 +1,6 @@
 import React from 'react'
 import { images } from './ImagesDB';
-import '../styles/gamefield.css'
+import '../styles/gamefield.scss'
 import GameFieldInner from './GameFieldInner';
 
 export default function GameField({ selectLevel }) {

@@ -1,3 +1,5 @@
+@use "var" as v;
+
 /* Components FirstScreen */
 .first__screen {
   height: 100%;
@@ -5,9 +7,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
 
-.first__screen img {
-  width: 80%;
-  max-width: 350px;
+  img {
+    width: 80%;
+    max-width: 350px;
+  }
 }

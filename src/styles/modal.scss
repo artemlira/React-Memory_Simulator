@@ -1,3 +1,5 @@
+@use "var" as v;
+
 .overlay {
   position: fixed;
   top: 0;
@@ -12,7 +14,7 @@
 
 .modal__window {
   background-image: radial-gradient(55.87% 55.87% at 50.19% 47.51%, rgba(138, 30, 189, 0) 0%, #4B39A3 100%);
-  border: 3px solid var(--yellow);
+  border: 3px solid v.$yellow;
   border-radius: 15px;
   padding: 30px;
   position: relative;
@@ -46,5 +48,5 @@
 }
 
 .level__item:hover {
-  color: var(--yellow);
+  color: v.$yellow;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from '../images/logo.svg';
-import '../styles/firstscreen.css';
+import '../styles/firstscreen.scss';
 import { useHistory } from 'react-router-dom';
 
 export default function FirstScreen({ setOpenWindow, selectLevel }) {

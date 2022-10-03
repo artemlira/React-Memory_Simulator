@@ -12,7 +12,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 function App() {
   const [openWindow, setOpenWindow] = useState(null);
   const [selectLevel, setSelectLevel] = useState(0);
-  console.log(selectLevel);
 
   return (
     <>
