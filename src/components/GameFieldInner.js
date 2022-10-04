@@ -1,28 +1,30 @@
 import React from 'react'
 
-export default function GameFieldInner({ selectLevel }) {
-  let template = {
+export default function GameFieldInner({ count, arr }) {
 
-  }
+  let template = {}
 
   const generateTemplate = () => {
 
-    if (selectLevel === 0) {
-      return 0;
+    if (count === 0) {
+      return null;
     }
-    if (selectLevel === 1) {
+
+    if (count === 4) {
       return template = {
         gridTemplateColumns: '1fr 1fr',
         gridTemplateRows: '1fr 1fr'
       }
     }
-    if (selectLevel === 2) {
+    
+    if (count === 6) {
       return template = {
         gridTemplateColumns: '1fr 1fr 1fr',
         gridTemplateRows: '1fr 1fr'
       }
     }
-    if (selectLevel === 3) {
+
+    if (count === 9) {
       return template = {
         gridTemplateColumns: '1fr 1fr 1fr',
         gridTemplateRows: '1fr 1fr 1fr'
@@ -32,19 +34,13 @@ export default function GameFieldInner({ selectLevel }) {
     return template;
   }
 
-
-
   return (
-    <ul className='field__items' >
-      <li className='field__item'></li>
-      <li className='field__item'></li>
-      <li className='field__item'></li>
-      <li className='field__item'></li>
-      <li className='field__item'></li>
-      <li className='field__item'></li>
-      <li className='field__item'></li>
-      <li className='field__item'></li>
-      <li className='field__item'></li>
+    <ul className='field__items' style={generateTemplate()}>
+
+      {arr.map(item =>
+        <li className='field__item'>
+          <img src={item} alt='element' />
+        </li>)}
     </ul>
   )
 }

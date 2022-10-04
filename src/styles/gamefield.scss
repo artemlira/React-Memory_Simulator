@@ -4,10 +4,13 @@ h2 {
   color: #A2B8d8;
 }
 
-/* .timer {} */
+.field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .field__items {
-  width: 330px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -23,12 +26,17 @@ h2 {
 }
 
 .details__items {
-  width: 330px;
+  // width: 330px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-gap: 15px;
   margin: 15px auto;
   list-style: none;
+
+  @media screen and (max-width:540px) {
+    width: 330px;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 img {

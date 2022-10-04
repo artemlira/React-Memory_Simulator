@@ -48,15 +48,15 @@ export default function Modal({ openWindow, setOpenWindow, setSelectLevel }) {
               <ul className='level__items'>
                 <li
                   className='level__item'
-                  onClick={() => assignLevel(1)}
+                  onClick={() => assignLevel({ title: 1, count: 4 })}
                 >Легкий 2 x 2</li>
                 <li
                   className='level__item'
-                  onClick={() => assignLevel(2)}
+                  onClick={() => assignLevel({ title: 2, count: 6 })}
                 >Середній 3 x 2</li>
                 <li
                   className='level__item'
-                  onClick={() => assignLevel(3)}
+                  onClick={() => assignLevel({ title: 3, count: 9 })}
                 >Складний 3 x 3</li>
               </ul>
             </motion.div>

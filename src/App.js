@@ -7,11 +7,14 @@ import NotFound from "./components/NotFound";
 import Rating from './components/Rating';
 import Modal from "./components/Modal";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import useArray from "./hooks/useArray";
 
 
 function App() {
   const [openWindow, setOpenWindow] = useState(null);
-  const [selectLevel, setSelectLevel] = useState(0);
+  const [selectLevel, setSelectLevel] = useState({});
+
+  const arr = useArray(selectLevel.count);
 
   return (
     <>
@@ -31,6 +34,7 @@ function App() {
               <Route path='/game'>
                 <GameField
                   selectLevel={selectLevel}
+                  arr={arr}
                 />
               </Route>
               <Route component={NotFound} />

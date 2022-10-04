@@ -1,33 +1,22 @@
 import React from 'react'
-import { images } from './ImagesDB';
 import '../styles/gamefield.scss'
 import GameFieldInner from './GameFieldInner';
+import DetailsInner from './DetailsInner';
+import Timer from './Timer';
 
-export default function GameField({ selectLevel }) {
+export default function GameField({ selectLevel, arr }) {
   return (
     <>
-      <h2>Рівень складності {selectLevel}</h2>
-      <div className='timer'>00:00</div>
+      <h2>Рівень складності {selectLevel.title}</h2>
+      <Timer />
       <div className='field'>
         <GameFieldInner
-          selectLevel={selectLevel}
+          count={selectLevel.count}
+          arr={arr}
         />
       </div>
       <div className='details'>
-        <ul className='details__items'>
-          <li className='details__item'>
-            <img src={images[3]} alt="element" />
-          </li>
-          <li className='details__item'>
-            <img src={images[4]} alt="element" />
-          </li>
-          <li className='details__item'>
-            <img src={images[5]} alt="element" />
-          </li>
-          <li className='details__item'>
-            <img src={images[6]} alt="element" />
-          </li>
-        </ul>
+        <DetailsInner />
       </div>
 
     </>
