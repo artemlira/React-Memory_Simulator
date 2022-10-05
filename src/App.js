@@ -26,7 +26,7 @@ function App() {
               <Route exact path='/'>
                 <FirstScreen
                   setOpenWindow={setOpenWindow}
-                  selectLevel={selectLevel}
+                  selectLevel={selectLevel.title}
                 />
               </Route>
               <Route path='/settings' component={Settings} />

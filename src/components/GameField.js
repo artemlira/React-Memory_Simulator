@@ -8,7 +8,7 @@ export default function GameField({ selectLevel, arr }) {
   return (
     <>
       <h2>Рівень складності {selectLevel.title}</h2>
-      <Timer />
+      <Timer selectLevel={selectLevel.title} />
       <div className='field'>
         <GameFieldInner
           count={selectLevel.count}
@@ -18,7 +18,6 @@ export default function GameField({ selectLevel, arr }) {
       <div className='details'>
         <DetailsInner />
       </div>
-
     </>
   )
 }
