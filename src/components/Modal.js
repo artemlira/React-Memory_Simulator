@@ -4,6 +4,18 @@ import { motion, AnimatePresence } from "framer-motion"
 
 export default function Modal({ openWindow, setOpenWindow, setSelectLevel }) {
 
+  const variant = {
+    hidden: {
+      opacity: 0,
+      translateY: 100
+
+    },
+    visible: {
+      opacity: 1,
+      translateY: 0
+    }
+  }
+
   const assignLevel = (num) => {
     setSelectLevel(num);
     setOpenWindow(null);
@@ -25,18 +37,10 @@ export default function Modal({ openWindow, setOpenWindow, setSelectLevel }) {
           >
             <motion.div
               className='modal__window'
-              initial={{
-                opacity: 0,
-                translateY: 100
-              }}
-              animate={{
-                opacity: 1,
-                translateY: 0
-              }}
-              exit={{
-                opacity: 0,
-                translateY: -100
-              }}
+              variants={variant}
+              initial='hidden'
+              animate='visible'
+              exit='hidden'
               transition={{
                 duration: 0.3,
                 delay: 0.3,

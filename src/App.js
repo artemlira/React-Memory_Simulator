@@ -6,6 +6,7 @@ import Settings from "./components/Settings";
 import NotFound from "./components/NotFound";
 import Rating from './components/Rating';
 import Modal from "./components/Modal";
+// import useTimer from "./hooks/useTimer";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import useArray from "./hooks/useArray";
 
@@ -15,7 +16,7 @@ function App() {
   const [selectLevel, setSelectLevel] = useState({});
 
   const arr = useArray(selectLevel.count);
-
+  
   return (
     <>
       <section className="main">

@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from 'react'
 
-export default function Timer({ selectLevel }) {
 
-  const [timer, setTimer] = useState(30);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      selectLevel &&
-        setTimer((timer) => (timer >= 1 ? timer - 1 : 0))
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    }
-  }, [selectLevel]);
-
+export default function Timer({ minutes, seconds }) {
 
   return (
-    <div className='timer'>00:{timer > 9 ? timer : `0${timer}`}</div>
+    <div className='timer'>
+      {minutes > 9 ? minutes : `0${minutes}`}
+      :
+      {seconds > 9 ? seconds : `0${seconds}`}
+    </div>
   )
 }

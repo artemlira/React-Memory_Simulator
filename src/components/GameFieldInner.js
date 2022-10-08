@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function GameFieldInner({ count, arr }) {
+export default function GameFieldInner({ arr, startGame, dragOverHandler, dragLeaveHandler, dragEndHandler, dropHandler }) {
 
+
+  let count = arr.length;
   let template = {}
 
   const generateTemplate = () => {
@@ -16,7 +18,7 @@ export default function GameFieldInner({ count, arr }) {
         gridTemplateRows: '1fr 1fr'
       }
     }
-    
+
     if (count === 6) {
       return template = {
         gridTemplateColumns: '1fr 1fr 1fr',
@@ -37,11 +39,25 @@ export default function GameFieldInner({ count, arr }) {
   return (
     <ul className='field__items' style={generateTemplate()}>
 
-      {arr.map(item =>
-        <li className='field__item'>
-          <img src={item} alt='element' />
-        </li>)}
-    </ul>
+      {arr.map((item, index) =>
+        <li
+          className='field__item'
+          key={index}
+          data-pic={item}
+          onDragOver={e => dragOverHandler(e)}
+          onDragLeave={e => dragLeaveHandler(e)}
+          onDragEnd={e => dragEndHandler(e)}
+          onDrop={e => dropHandler(e)}
+        >
+          {
+            !startGame &&
+            <img
+              src={item}
+              alt='element' />
+          }
+        </li>)
+      }
+    </ul >
   )
 }
 
