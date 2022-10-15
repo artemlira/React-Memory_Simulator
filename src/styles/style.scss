@@ -1,14 +1,6 @@
 @use "var" as v;
+@import-normalize;
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
-
-
-// :root {
-//   --color1: #4B39A3;
-//   --color2: #8F5DD0;
-//   --yellow: #FEE60C;
-//   --font: 'Lobster', cursive;
-// }
 
 * {
   padding: 0;
@@ -95,7 +87,7 @@ body {
 
   &:hover {
     background-color: v.$color2;
-    color: v.$yellow  !important;
+    color: v.$yellow !important;
   }
 
   &:hover img {
@@ -126,3 +118,4 @@ body {
 .button:hover {
   background-image: linear-gradient(to top, rgba(224, 252, 165, 1) 23.96%, rgba(77, 208, 28, 1) 86.44%);
 }
+

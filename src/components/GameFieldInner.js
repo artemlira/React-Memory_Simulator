@@ -1,6 +1,7 @@
 import React from 'react'
+import LiField from './LiField';
 
-export default function GameFieldInner({ arr, startGame, dragOverHandler, dragLeaveHandler, dragEndHandler, dropHandler }) {
+export default function GameFieldInner({ arr, startGame, dragOverHandler, dragLeaveHandler, dragEndHandler, dropHandler, currentElement, currentClass }) {
 
 
   let count = arr.length;
@@ -40,23 +41,19 @@ export default function GameFieldInner({ arr, startGame, dragOverHandler, dragLe
     <ul className='field__items' style={generateTemplate()}>
 
       {arr.map((item, index) =>
-        <li
-          className='field__item'
+        <LiField
           key={index}
-          data-pic={item}
-          onDragOver={e => dragOverHandler(e)}
-          onDragLeave={e => dragLeaveHandler(e)}
-          onDragEnd={e => dragEndHandler(e)}
-          onDrop={e => dropHandler(e)}
-        >
-          {
-            !startGame &&
-            <img
-              src={item}
-              alt='element' />
-          }
-        </li>)
-      }
+          item={item}
+          index={index}
+          dragOverHandler={dragOverHandler}
+          dragLeaveHandler={dragLeaveHandler}
+          dragEndHandler={dragEndHandler}
+          dropHandler={dropHandler}
+          currentElement={currentElement}
+          startGame={startGame}
+          currentClass={currentClass}
+        />
+      )}
     </ul >
   )
 }
