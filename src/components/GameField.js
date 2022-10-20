@@ -6,6 +6,9 @@ import Timer from './Timer';
 import useTimer from '../hooks/useTimer';
 // import DeleteButton from './DeleteButton';
 
+
+// e.target.insertAdjacentElement
+
 export default function GameField({ selectLevel, arr }) {
   //копия картинки, которую мы перетаскиваем
   const [currentDetail, setCurrentDetail] = useState(null);
@@ -56,7 +59,7 @@ export default function GameField({ selectLevel, arr }) {
     }
   }
 
-  
+
 
   const dropHandler = (e) => {
     e.preventDefault();
@@ -70,8 +73,6 @@ export default function GameField({ selectLevel, arr }) {
       } else {
         e.target.classList.add('field__error');
         setCurrentElement(e.target);
-       
-        // e.target.insertAdjacentHTML('afterbegin', "<span class='delete__button'>+</span>");
       }
     }
     // setCurrentElement(e.target.querySelector('img'));

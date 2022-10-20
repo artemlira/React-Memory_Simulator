@@ -20,6 +20,6 @@ export default function LiField({ item, index, dragOverHandler, dragLeaveHandler
           alt='element' />
       }
 
-      <DeleteButton currentElement={currentElement} />
+      {/* <DeleteButton currentElement={currentElement} /> */}
     </li>)
 }

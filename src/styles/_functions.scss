@@ -1,0 +1,17 @@
+@use 'variables.scss' as v;
+
+
+//функция перевода в rem
+@function rem($size) {
+  @return calc($size / 16 * 1rem);
+}
+
+//функция перевода в %
+@function pr($sizeBox , $size) {
+  @return calc($size / $sizeBox * 100%);
+}
+
+//функция перевода в vw, где числом указывается максимальный размер макета
+@function vw($value, $base: v.$maxWidth) {
+  @return calc($value / $base * 100vw);
+}
