@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/modal.scss';
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Modal({ openWindow, setOpenWindow, setSelectLevel }) {
 
@@ -67,7 +67,6 @@ export default function Modal({ openWindow, setOpenWindow, setSelectLevel }) {
           </motion.div>
         )
       }
-
     </AnimatePresence>
   )
 }
