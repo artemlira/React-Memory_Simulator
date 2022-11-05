@@ -2,7 +2,7 @@ import React from 'react'
 import { pics } from './ImagesDB';
 import { motion } from 'framer-motion';
 
-export default function DetailsInner({ dragOverHandler, dragLeaveHandler, dragEndHandler, dragStartHendler }) {
+export default function DetailsInner() {
 
 
 
@@ -33,10 +33,6 @@ export default function DetailsInner({ dragOverHandler, dragLeaveHandler, dragEn
             alt="element"
             draggable={true}
             style={{ cursor: "grab" }}
-            onDragOver={(e) => dragOverHandler(e)}
-            onDragLeave={(e) => dragLeaveHandler(e)}
-            onDragEnd={(e) => dragEndHandler(e)}
-            onDragStart={(e) => dragStartHendler(e)}
           />
         </motion.li>
       )}
