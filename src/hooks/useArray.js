@@ -5,16 +5,19 @@ export default function useArray(n) {
 
   let arr = [];
   let userLevel = [];
+  let uniqueSetNumbers = [];
 
-  const rand = () => {
+  for (let i = 0; uniqueSetNumbers.length < n; i++) {
     let num = Math.floor(Math.random() * pics.length);
-    return num;
+    if (!uniqueSetNumbers.includes(num)) {
+      uniqueSetNumbers.push(num);
+    }
   }
 
-  for (let i = 0; i < n; i++) {
-    let c = { id: i, elem: pics[rand()] };
+  uniqueSetNumbers.forEach((item, index) => {
+    let c = { id: index, elem: pics[item] };
     arr.push(c);
-  }
+  });
 
   for (let i = 0; i < n; i++) {
     let c = { id: i, elem: null };

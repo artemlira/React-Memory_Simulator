@@ -47,14 +47,14 @@ h2 {
 .details__items {
   // width: 330px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   grid-gap: 15px;
   margin: 15px auto;
   list-style: none;
 
   @media screen and (max-width:540px) {
     width: 330px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
