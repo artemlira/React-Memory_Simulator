@@ -1,7 +1,9 @@
 import React from 'react';
-import DeleteButton from './DeleteButton';
+
 
 export default function LiField({ item, index, dragOverHandler, dragLeaveHandler, dragEndHandler, dropHandler, startGame, currentClass, currentElement }) {
+
+  console.log(startGame);
 
   return (
     <li
@@ -19,6 +21,5 @@ export default function LiField({ item, index, dragOverHandler, dragLeaveHandler
           alt='element' />
       }
 
-      {/* <DeleteButton currentElement={currentElement} /> */}
     </li>)
 }

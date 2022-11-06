@@ -32,6 +32,7 @@ export default function GameField({ selectLevel, arr }) {
       </div>
       <div className='details'>
         <DetailsInner
+          arr={arr}
         />
       </div>
     </>

@@ -1,7 +1,7 @@
 import React from 'react'
 import LiField from './LiField';
 
-export default function GameFieldInner({ arr }) {
+export default function GameFieldInner({ arr, startGame }) {
 
 
   let count = arr.length;
@@ -45,6 +45,7 @@ export default function GameFieldInner({ arr }) {
           key={index}
           item={item}
           index={index}
+          startGame={startGame}
         />
       )}
     </ul >

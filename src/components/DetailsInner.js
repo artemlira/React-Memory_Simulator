@@ -1,10 +1,38 @@
 import React from 'react'
-import { pics } from './ImagesDB';
+// import { pics } from './ImagesDB';
 import { motion } from 'framer-motion';
 
-export default function DetailsInner() {
+export default function DetailsInner({ arr }) {
 
+  let count = arr.length;
+  let template = {}
 
+  const generateTemplate = () => {
+
+    if (count === 0) {
+      return null;
+    }
+
+    if (count === 4) {
+      return template = {
+        gridTemplateColumns: '1fr 1fr 1fr 1fr'
+      }
+    }
+
+    if (count === 6) {
+      return template = {
+        gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr'
+      }
+    }
+
+    if (count === 9) {
+      return template = {
+        gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr'
+      }
+    }
+
+    return template;
+  }
 
   const myVariant = {
     hidden: { opacity: 0 },
@@ -12,14 +40,14 @@ export default function DetailsInner() {
       return ({
         opacity: 1,
         transition: {
-          delay: i * 0.2
+          delay: i * 0.05
         }
       })
     }
   }
   return (
-    <ul className='details__items'>
-      {pics.map((item, index) =>
+    <ul className='details__items' style={generateTemplate()}>
+      {arr.map((item, index) =>
         <motion.li
           key={index}
           className='details__item'
@@ -29,7 +57,7 @@ export default function DetailsInner() {
           custom={index}
         >
           <img
-            src={item}
+            src={item.elem}
             alt="element"
             draggable={true}
             style={{ cursor: "grab" }}
