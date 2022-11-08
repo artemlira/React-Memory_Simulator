@@ -1,25 +1,25 @@
 import React from 'react';
 
 
-export default function LiField({ item, index, dragOverHandler, dragLeaveHandler, dragEndHandler, dropHandler, startGame, currentClass, currentElement }) {
-
-  console.log(startGame);
+export default function LiField({ item, index, startGame, dragStart, dragOver, dragLeave, dropHandler }) {
 
   return (
     <li
       className='field__item'
       key={index}
-      onDragOver={e => dragOverHandler(e)}
-      onDragLeave={e => dragLeaveHandler(e)}
-      onDragEnd={e => dragEndHandler(e)}
-      onDrop={e => dropHandler(e)}
+      onDragOver={e => dragOver(e, item)}
+      onDragLeave={e => dragLeave(e)}
+      onDragStart={e => dragStart(e, item, 'two')}
+      onDrop={e => dropHandler(e, item)}
     >
-      {
+      {/* {
         !startGame &&
         <img
           src={item.elem}
           alt='element' />
-      }
+      } */}
+
+      {item.elem && <img src={item.elem} alt='pic' />}
 
     </li>)
 }

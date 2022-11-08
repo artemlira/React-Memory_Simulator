@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Menu from "./components/Menu";
 import FirstScreen from "./components/FirstScreen";
 import GameField from "./components/GameField";
@@ -17,6 +17,21 @@ function App() {
 
   //поточний ігровий раунд та масив для версії ігрока
   const [arr, userLevel] = useArray(selectLevel.count);
+
+
+  const [userArr, setUserArr] = useState([]);
+  // console.log(userArr);
+  // console.log(userLevel);
+
+  useEffect(() => {
+    setUserArr(userLevel);
+  }, [selectLevel]);
+
+  const [currentCart, setCurrentCart] = useState(null);
+  const [currentFloor, setCurrentFloor] = useState(null);
+  const [result, setResult] = useState([]);
+  const [area, setArea] = useState(null);
+
 
   return (
     <>
@@ -37,6 +52,16 @@ function App() {
                 <GameField
                   selectLevel={selectLevel}
                   arr={arr}
+                  userLevel={userArr}
+                  setUserLevel={setUserArr}
+                  currentCart={currentCart}
+                  setCurrentCart={setCurrentCart}
+                  currentFloor={currentFloor}
+                  setCurrentFloor={setCurrentFloor}
+                  result={result}
+                  setResult={setResult}
+                  area={area}
+                  setArea={setArea}
                 />
               </Route>
               <Route component={NotFound} />

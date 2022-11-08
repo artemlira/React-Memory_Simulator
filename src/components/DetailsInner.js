@@ -2,7 +2,9 @@ import React from 'react'
 // import { pics } from './ImagesDB';
 import { motion } from 'framer-motion';
 
-export default function DetailsInner({ arr }) {
+export default function DetailsInner({ arr, dragStart }) {
+
+  arr[0] && console.log(arr[0].elem);
 
   let count = arr.length;
   let template = {}
@@ -45,6 +47,8 @@ export default function DetailsInner({ arr }) {
       })
     }
   }
+
+
   return (
     <ul className='details__items' style={generateTemplate()}>
       {arr.map((item, index) =>
@@ -61,6 +65,7 @@ export default function DetailsInner({ arr }) {
             alt="element"
             draggable={true}
             style={{ cursor: "grab" }}
+            onDragStart={e => dragStart(e, item, 'one')}
           />
         </motion.li>
       )}

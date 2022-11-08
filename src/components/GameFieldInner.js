@@ -1,8 +1,7 @@
 import React from 'react'
 import LiField from './LiField';
 
-export default function GameFieldInner({ arr, startGame }) {
-
+export default function GameFieldInner({ arr, userLevel, startGame, dragStart, dragOver, dragLeave, dropHandler }) {
 
   let count = arr.length;
   let template = {}
@@ -39,15 +38,31 @@ export default function GameFieldInner({ arr, startGame }) {
 
   return (
     <ul className='field__items' style={generateTemplate()}>
-
-      {arr.map((item, index) =>
-        <LiField
-          key={index}
-          item={item}
-          index={index}
-          startGame={startGame}
-        />
-      )}
+      {!startGame ?
+        arr.map((item, index) =>
+          <LiField
+            key={index}
+            item={item}
+            index={index}
+            // startGame={startGame}
+            // dragStart={dragStart}
+            // dragOver={dragOver}
+            // dragLeave={dragLeave}
+            // dropHandler={dropHandler}
+          />)
+        :
+        userLevel.map((item, index) =>
+          <LiField
+            key={index}
+            item={item}
+            index={index}
+            startGame={startGame}
+            dragStart={dragStart}
+            dragOver={dragOver}
+            dragLeave={dragLeave}
+            dropHandler={dropHandler}
+          />)
+      }
     </ul >
   )
 }
