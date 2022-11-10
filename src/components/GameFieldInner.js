@@ -4,6 +4,8 @@ import LiField from './LiField';
 export default function GameFieldInner({ arr, userLevel, startGame, dragStart, dragOver, dragLeave, dropHandler }) {
 
   let count = arr.length;
+
+
   let template = {}
 
   const generateTemplate = () => {
@@ -44,11 +46,11 @@ export default function GameFieldInner({ arr, userLevel, startGame, dragStart, d
             key={index}
             item={item}
             index={index}
-            // startGame={startGame}
-            // dragStart={dragStart}
-            // dragOver={dragOver}
-            // dragLeave={dragLeave}
-            // dropHandler={dropHandler}
+          // startGame={startGame}
+          // dragStart={dragStart}
+          // dragOver={dragOver}
+          // dragLeave={dragLeave}
+          // dropHandler={dropHandler}
           />)
         :
         userLevel.map((item, index) =>

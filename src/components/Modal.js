@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/modal.scss';
 import { motion, AnimatePresence } from "framer-motion"
 
-export default function Modal({ openWindow, setOpenWindow, setSelectLevel }) {
+export default function Modal({ openWindow, openVinWindow, setOpenVinWindow, setOpenWindow, setSelectLevel }) {
 
   const variant = {
     hidden: {
@@ -24,10 +24,13 @@ export default function Modal({ openWindow, setOpenWindow, setSelectLevel }) {
   return (
     <AnimatePresence>
       {
-        openWindow && (
+        (openWindow || openVinWindow) && (
           <motion.div
             className='overlay'
-            onClick={() => setOpenWindow(null)}
+            onClick={() => {
+              setOpenWindow(null);
+              setOpenVinWindow(null);
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -48,21 +51,34 @@ export default function Modal({ openWindow, setOpenWindow, setSelectLevel }) {
                 dumpig: 10,
               }}
             >
-              <h3 className='title'>Рівень складності</h3>
-              <ul className='level__items'>
-                <li
-                  className='level__item'
-                  onClick={() => assignLevel({ title: 1, count: 4 })}
-                >Легкий 2 x 2</li>
-                <li
-                  className='level__item'
-                  onClick={() => assignLevel({ title: 2, count: 6 })}
-                >Середній 3 x 2</li>
-                <li
-                  className='level__item'
-                  onClick={() => assignLevel({ title: 3, count: 9 })}
-                >Складний 3 x 3</li>
-              </ul>
+              {!openVinWindow ?
+                (
+                  <>
+                    <h3 className='title'>Рівень складності</h3>
+                    <ul className='level__items'>
+                      <li
+                        className='level__item'
+                        onClick={() => assignLevel({ title: 1, count: 4 })}
+                      >Легкий 2 x 2</li>
+                      <li
+                        className='level__item'
+                        onClick={() => assignLevel({ title: 2, count: 6 })}
+                      >Середній 3 x 2</li>
+                      <li
+                        className='level__item'
+                        onClick={() => assignLevel({ title: 3, count: 9 })}
+                      >Складний 3 x 3</li>
+                    </ul>
+                  </>
+                ) :
+                <>
+                  <h3 className='title'>Привітання</h3>
+                  <ul className="level__items">
+                    <li className="level__item">Вітаю, ти виграв!!!</li>
+                  </ul>
+                </>
+              }
+
             </motion.div>
           </motion.div>
         )

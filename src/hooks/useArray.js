@@ -1,4 +1,3 @@
-
 import { pics } from '../components/ImagesDB';
 
 export default function useArray(n) {

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function DetailsInner({ arr, dragStart }) {
 
-  arr[0] && console.log(arr[0].elem);
+  
 
   let count = arr.length;
   let template = {}

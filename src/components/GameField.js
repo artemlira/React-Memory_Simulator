@@ -16,6 +16,19 @@ export default function GameField({ selectLevel, arr, userLevel, setUserLevel, c
     if (minutes === 0 && seconds === 0) { isStartGame(true) }
   }, [minutes, seconds]);
 
+  useEffect(() => {
+    setResult(userLevel.map((item, index) => {
+
+      if (item.elem === arr[index].elem) {
+        return true;
+      } else {
+        return false;
+      }
+    }))
+
+  }, [userLevel]);
+
+
   const dragOver = (e, floor) => {
     e.preventDefault();
     e.target.style.outline = 'red dashed 3px';

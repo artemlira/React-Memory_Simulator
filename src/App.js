@@ -14,23 +14,31 @@ import useArray from "./hooks/useArray";
 function App() {
   const [openWindow, setOpenWindow] = useState(null);
   const [selectLevel, setSelectLevel] = useState({});
+  const [openVinWindow, setOpenVinWindow] = useState(null);
 
   //поточний ігровий раунд та масив для версії ігрока
   const [arr, userLevel] = useArray(selectLevel.count);
 
-
+  //масиви, де ці дублі зберігаються
   const [userArr, setUserArr] = useState([]);
-  // console.log(userArr);
-  // console.log(userLevel);
+  const [compArr, setCompArr] = useState([]);
+
 
   useEffect(() => {
     setUserArr(userLevel);
+    setCompArr(arr);
   }, [selectLevel]);
 
   const [currentCart, setCurrentCart] = useState(null);
   const [currentFloor, setCurrentFloor] = useState(null);
   const [result, setResult] = useState([]);
   const [area, setArea] = useState(null);
+
+  useEffect(() => {
+    if (result.length > 0) {
+      setOpenVinWindow(result.every(item => item === true));
+    }
+  }, [result]);
 
 
   return (
@@ -51,7 +59,8 @@ function App() {
               <Route path='/game'>
                 <GameField
                   selectLevel={selectLevel}
-                  arr={arr}
+                  // arr={arr}
+                  arr={compArr}
                   userLevel={userArr}
                   setUserLevel={setUserArr}
                   currentCart={currentCart}
@@ -76,6 +85,8 @@ function App() {
       <Modal openWindow={openWindow}
         setOpenWindow={setOpenWindow}
         setSelectLevel={setSelectLevel}
+        openVinWindow={openVinWindow}
+        setOpenVinWindow={setOpenVinWindow}
       />
     </>
   );
