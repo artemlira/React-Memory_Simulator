@@ -6,11 +6,13 @@ import Timer from './Timer';
 import useTimer from '../hooks/useTimer';
 
 
-export default function GameField({ selectLevel, arr, userLevel, setUserLevel, currentCart, setCurrentCart, currentFloor, setCurrentFloor, result, setResult, area, setArea }) {
+export default function GameField({ selectLevel, startGame, isStartGame, arr, userLevel, setUserLevel, currentCart, setCurrentCart, currentFloor, setCurrentFloor, setResult, area, setArea, time, setTime }) {
 
 
-  const [minutes, seconds] = useTimer(selectLevel);
-  const [startGame, isStartGame] = useState(false);
+  const [minutes, seconds] = useTimer(selectLevel, time, setTime);
+  // const [startGame, isStartGame] = useState(false);
+
+
 
   useEffect(() => {
     if (minutes === 0 && seconds === 0) { isStartGame(true) }

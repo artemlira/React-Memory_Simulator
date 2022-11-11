@@ -12,9 +12,12 @@ import useArray from "./hooks/useArray";
 
 
 function App() {
+  const timer = 5;
   const [openWindow, setOpenWindow] = useState(null);
   const [selectLevel, setSelectLevel] = useState({});
   const [openVinWindow, setOpenVinWindow] = useState(null);
+  const [startGame, isStartGame] = useState(false);
+  const [time, setTime] = useState(timer);
 
   //поточний ігровий раунд та масив для версії ігрока
   const [arr, userLevel] = useArray(selectLevel.count);
@@ -59,6 +62,10 @@ function App() {
               <Route path='/game'>
                 <GameField
                   selectLevel={selectLevel}
+                  startGame={startGame}
+                  isStartGame={isStartGame}
+                  time={time}
+                  setTime={setTime}
                   // arr={arr}
                   arr={compArr}
                   userLevel={userArr}
@@ -67,7 +74,7 @@ function App() {
                   setCurrentCart={setCurrentCart}
                   currentFloor={currentFloor}
                   setCurrentFloor={setCurrentFloor}
-                  result={result}
+                  // result={result}
                   setResult={setResult}
                   area={area}
                   setArea={setArea}
@@ -84,9 +91,13 @@ function App() {
       </section>
       <Modal openWindow={openWindow}
         setOpenWindow={setOpenWindow}
+        selectLevel={selectLevel}
         setSelectLevel={setSelectLevel}
         openVinWindow={openVinWindow}
         setOpenVinWindow={setOpenVinWindow}
+        isStartGame={isStartGame}
+        setTime={setTime}
+        timer={timer}
       />
     </>
   );

@@ -5,7 +5,6 @@ export default function GameFieldInner({ arr, userLevel, startGame, dragStart, d
 
   let count = arr.length;
 
-
   let template = {}
 
   const generateTemplate = () => {

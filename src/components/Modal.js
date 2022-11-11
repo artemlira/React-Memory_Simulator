@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/modal.scss';
 import { motion, AnimatePresence } from "framer-motion"
 
-export default function Modal({ openWindow, openVinWindow, setOpenVinWindow, setOpenWindow, setSelectLevel }) {
+export default function Modal({ openWindow, openVinWindow, selectLevel, setOpenVinWindow, setOpenWindow, setSelectLevel, isStartGame, setTime, timer }) {
 
   const variant = {
     hidden: {
@@ -21,16 +21,33 @@ export default function Modal({ openWindow, openVinWindow, setOpenVinWindow, set
     setOpenWindow(null);
   }
 
+  const closeVinWindow = () => {
+    setSelectLevel(0);
+    setOpenVinWindow(null);
+  }
+
+  const nextLevel = ({ title, count }) => {
+    if (count === 4) {
+      setSelectLevel({ title: 2, count: 6 });
+      isStartGame(false);
+      setTime(timer);
+    }
+    if (count === 6) {
+      setSelectLevel({ title: 3, count: 9 });
+      isStartGame(false);
+      setTime(timer);
+    }
+
+    setOpenVinWindow(null);
+  }
+
   return (
     <AnimatePresence>
       {
         (openWindow || openVinWindow) && (
           <motion.div
             className='overlay'
-            onClick={() => {
-              setOpenWindow(null);
-              setOpenVinWindow(null);
-            }}
+            onClick={() => setOpenWindow(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -73,9 +90,19 @@ export default function Modal({ openWindow, openVinWindow, setOpenVinWindow, set
                 ) :
                 <>
                   <h3 className='title'>Привітання</h3>
-                  <ul className="level__items">
-                    <li className="level__item">Вітаю, ти виграв!!!</li>
-                  </ul>
+                  <div className="vin">
+                    <p className="vin__text">Вітаю, ти виграв!!!</p>
+                    <ul className='vin__items'>
+                      <li
+                        className="vin__nextlevel"
+                        onClick={() => nextLevel(selectLevel)}
+                      >Слідуючий рівень</li>
+                      <li
+                        className="vin__close"
+                        onClick={() => closeVinWindow()}
+                      >Закрити</li>
+                    </ul>
+                  </div>
                 </>
               }
 

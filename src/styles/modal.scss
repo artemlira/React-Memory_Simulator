@@ -52,3 +52,20 @@
 .level__item:hover {
   color: v.$yellow;
 }
+
+.vin__items {
+  margin-top: 40px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.vin__close,
+.vin__nextlevel {
+  cursor: pointer;
+
+  &:hover {
+    color: v.$yellow;
+  }
+}
