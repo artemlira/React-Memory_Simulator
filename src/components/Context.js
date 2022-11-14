@@ -20,9 +20,13 @@ const Context = (props) => {
   const [currentFloor, setCurrentFloor] = useState(null);
   const [result, setResult] = useState([]);
   const [area, setArea] = useState(null);
-  const [gameMinutes, setGameMinutes] = useGameTimer(startGame, openVinWindow);
 
-  // console.log(startGame);
+  const [playerTime, setPlayerTime] = useState(0);
+  const [gameMinutes, setGameMinutes] = useGameTimer(startGame, openVinWindow, isStartGame, setPlayerTime);
+
+  console.log(playerTime);
+
+
 
   useEffect(() => {
     if (minutes === 0 && seconds === 0) { isStartGame(true) }
