@@ -1,10 +1,11 @@
-import React from 'react'
-// import { pics } from './ImagesDB';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
+import { GameContext } from './Context';
 
-export default function DetailsInner({ arr, dragStart }) {
+export default function DetailsInner() {
+  const data = useContext(GameContext);
 
-  let count = arr.length;
+  let count = data.compArr.length;
   let template = {}
 
   const generateTemplate = () => {
@@ -49,7 +50,7 @@ export default function DetailsInner({ arr, dragStart }) {
 
   return (
     <ul className='details__items' style={generateTemplate()}>
-      {arr.map((item, index) =>
+      {data.compArr.map((item, index) =>
         <motion.li
           key={index}
           className='details__item'
@@ -63,7 +64,7 @@ export default function DetailsInner({ arr, dragStart }) {
             alt="element"
             draggable={true}
             style={{ cursor: "grab" }}
-            onDragStart={e => dragStart(e, item, 'one')}
+            onDragStart={e => data.dragStart(e, item, 'one')}
           />
         </motion.li>
       )}

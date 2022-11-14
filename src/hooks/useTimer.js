@@ -2,9 +2,6 @@ import { useState, useEffect } from 'react';
 
 export default function useTimer(selectLevel, time, setTime) {
 
-  // const [time, setTime] = useState(5);
-
-
   const minutes = Math.floor(time / 60);
   const seconds = time - minutes * 60;
 

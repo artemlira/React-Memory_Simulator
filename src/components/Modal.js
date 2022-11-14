@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/modal.scss';
 import { motion, AnimatePresence } from "framer-motion"
+import { GameContext } from './Context';
 
-export default function Modal({ openWindow, openVinWindow, selectLevel, setOpenVinWindow, setOpenWindow, setSelectLevel, isStartGame, setTime, timer }) {
+export default function Modal() {
+  const data = useContext(GameContext);
+
 
   const variant = {
     hidden: {
@@ -17,37 +20,37 @@ export default function Modal({ openWindow, openVinWindow, selectLevel, setOpenV
   }
 
   const assignLevel = (num) => {
-    setSelectLevel(num);
-    setOpenWindow(null);
+    data.setSelectLevel(num);
+    data.setOpenWindow(null);
   }
 
   const closeVinWindow = () => {
-    setSelectLevel(0);
-    setOpenVinWindow(null);
+    data.setSelectLevel(0);
+    data.setOpenVinWindow(null);
   }
 
   const nextLevel = ({ title, count }) => {
     if (count === 4) {
-      setSelectLevel({ title: 2, count: 6 });
-      isStartGame(false);
-      setTime(timer);
+      data.setSelectLevel({ title: 2, count: 6 });
+      data.isStartGame(false);
+      data.setTime(data.timer);
     }
     if (count === 6) {
-      setSelectLevel({ title: 3, count: 9 });
-      isStartGame(false);
-      setTime(timer);
+      data.setSelectLevel({ title: 3, count: 9 });
+      data.isStartGame(false);
+      data.setTime(data.timer);
     }
 
-    setOpenVinWindow(null);
+    data.setOpenVinWindow(null);
   }
 
   return (
     <AnimatePresence>
       {
-        (openWindow || openVinWindow) && (
+        (data.openWindow || data.openVinWindow) && (
           <motion.div
             className='overlay'
-            onClick={() => setOpenWindow(null)}
+            onClick={() => data.setOpenWindow(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -68,7 +71,7 @@ export default function Modal({ openWindow, openVinWindow, selectLevel, setOpenV
                 dumpig: 10,
               }}
             >
-              {!openVinWindow ?
+              {!data.openVinWindow ?
                 (
                   <>
                     <h3 className='title'>Рівень складності</h3>
@@ -95,7 +98,7 @@ export default function Modal({ openWindow, openVinWindow, selectLevel, setOpenV
                     <ul className='vin__items'>
                       <li
                         className="vin__nextlevel"
-                        onClick={() => nextLevel(selectLevel)}
+                        onClick={() => nextLevel(data.selectLevel)}
                       >Слідуючий рівень</li>
                       <li
                         className="vin__close"

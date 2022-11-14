@@ -1,116 +1,103 @@
 import React, { useState, useEffect, createContext } from 'react';
-import useArray from '../hooks/useArray'
+import useArray from '../hooks/useArray';
+import useTimer from '../hooks/useTimer';
 
 export const GameContext = createContext();
 
 const Context = (props) => {
+  const timer = 5;
   const [selectLevel, setSelectLevel] = useState({});
   const [openWindow, setOpenWindow] = useState(null);
+  const [openVinWindow, setOpenVinWindow] = useState(null);
+  const [startGame, isStartGame] = useState(false);
+  const [time, setTime] = useState(timer);
+  const [minutes, seconds] = useTimer(selectLevel, time, setTime);
+  
   const [arr, userLevel] = useArray(selectLevel.count);
 
 
   const [userArr, setUserArr] = useState([]);
   const [compArr, setCompArr] = useState([]);
 
+
+  const [currentCart, setCurrentCart] = useState(null);
+  const [currentFloor, setCurrentFloor] = useState(null);
+  const [result, setResult] = useState([]);
+  const [area, setArea] = useState(null);
+
   useEffect(() => {
     setUserArr(userLevel);
     setCompArr(arr);
   }, [selectLevel]);
 
+  useEffect(() => {
+    if (minutes === 0 && seconds === 0) { isStartGame(true) }
+  }, [minutes, seconds]);
 
+  useEffect(() => {
+    if (result.length > 0) {
+      setOpenVinWindow(result.every(item => item === true));
+    }
+  }, [result]);
 
-  // const [gameLevel, allUniquePicture, gameFloor] = useArray(selectLevel.count);
+  useEffect(() => {
+    setResult(userArr.map((item, index) => {
 
-  // const [gameFloorState, getGameFloorState] = useState([]);
-  // const [gameLevelState, getGameLevelState] = useState([]);
-  // const [allUniquePictureState, setAllUniquePictureState] = useState([]);
+      if (item.elem === compArr[index].elem) {
+        return true;
+      } else {
+        return false;
+      }
+    }))
 
-  // useEffect(() => {
-  //   getGameFloorState(gameFloor);
-  //   getGameLevelState(gameLevel);
-  //   setAllUniquePictureState(allUniquePicture);
-  // }, [selectLevel.count]);
+  }, [userArr]);
 
-  //для перетягування
-  // const [currentCart, setCurrentCart] = useState(null);
-  // const [currentFloor, setCurrentFloor] = useState(null);
-  // const [result, setResult] = useState([]);
-  // const [area, setArea] = useState(null);
-  // const [final, setFinal] = useState(null);
+  const dragOver = (e, floor) => {
+    e.preventDefault();
+    e.target.style.outline = 'red dashed 3px';
+    e.target.style.outlineOffset = '-7px';
+    setCurrentFloor(floor);
+  }
 
-  // const dragOverHandler = (e, floor) => {
-  //   e.preventDefault();
-  //   e.target.style.outline = '#777 dashed 3px';
-  //   e.target.style.outlineOffset = '-7px';
-  //   setCurrentFloor(floor);
+  const dragLeave = (e) => {
+    e.target.style.outline = null;
+    e.target.style.outlineOffset = null;
+  }
 
-  // }
+  const dragStart = (e, cart, c) => {
+    setCurrentCart(cart);
+    setArea(c);
+  }
 
-  // const dragLeaveHandler = (e) => {
-  //   e.target.style.outline = null;
-  //   e.target.style.outlineOffset = null;
-  // }
+  const dropHandler = (e, cart) => {
+    e.preventDefault();
 
-  // const dragStartHandler = (e, cart, c) => {
-  //   setCurrentCart(cart);
-  //   setArea(c);
-  // }
+    if (area === 'one') {
+      setUserArr(userArr.map(item => {
+        if (item.id === currentFloor.id) {
+          return { id: item.id, elem: currentCart.elem };
+        } else {
+          return item;
+        }
+      }))
+    }
 
-  // const dragEndHandler = (e) => {
-  //   e.target.style.outline = null;
-  //   e.target.style.outlineOffset = null;
-  // }
+    if (area === 'two') {
+      setUserArr(userArr.map(item => {
+        if (item.id === cart.id) {
+          return { id: item.id, elem: currentCart.elem }
+        }
 
-  // const dropHandler = (e, cart) => {
-  //   e.preventDefault();
+        if (item.id === currentCart.id) {
+          return { id: item.id, elem: cart.elem }
+        }
 
-  //   if (area === 'one') {
-  //     getGameFloorState(gameFloorState.map(item => {
-  //       if (item.id === currentFloor.id) {
-  //         return { id: item.id, pic: currentCart.pic };
-  //       } else {
-  //         return item;
-  //       }
-  //     }))
-  //   }
-
-  //   if (area === 'two') {
-  //     getGameFloorState(gameFloorState.map(item => {
-  //       if (item.id === cart.id) {
-  //         return { id: item.id, pic: currentCart.pic }
-  //       }
-
-  //       if (item.id === currentCart.id) {
-  //         return { id: item.id, pic: cart.pic }
-  //       }
-
-  //       else return item;
-  //     }));
-  //   }
-  //   e.target.style.outline = null;
-  //   e.target.style.outlineOffset = null;
-  // }
-
-  // useEffect(() => {
-  //   setResult(gameFloorState.map((item, index) => {
-
-  //     if (item.pic === gameLevelState[index].pic) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   }))
-
-  // }, [gameFloorState]);
-
-  // useEffect(() => {
-  //   let c = result.every(item => item === true);
-  //   if (result.length > 0 && c) {
-  //     setFinal(true);
-  //     setOpenWindow(true);
-  //   }
-
-  // }, [result]);
+        else return item;
+      }));
+    }
+    e.target.style.outline = null;
+    e.target.style.outlineOffset = null;
+  }
 
   const value = {
     openWindow,
@@ -121,21 +108,27 @@ const Context = (props) => {
     setUserArr,
     compArr,
     setCompArr,
-
-
-    // gameLevel,
-    // allUniquePicture,
-    // gameFloor,
-    // dragOverHandler,
-    // dragLeaveHandler,
-    // dragStartHandler,
-    // dragEndHandler,
-    // dropHandler,
-    // gameFloorState,
-    // getGameFloorState,
-    // allUniquePictureState,
-    // gameLevelState,
-    // final
+    openVinWindow,
+    setOpenVinWindow,
+    time,
+    setTime,
+    startGame,
+    isStartGame,
+    timer,
+    minutes,
+    seconds,
+    currentCart,
+    setCurrentCart,
+    currentFloor,
+    setCurrentFloor,
+    result,
+    setResult,
+    area,
+    setArea,
+    dragOver,
+    dragLeave,
+    dragStart,
+    dropHandler,
   };
 
   return (
