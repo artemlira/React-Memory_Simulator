@@ -130,6 +130,7 @@ const Context = (props) => {
     allUniquePicture,
     gameMinutes,
     setGameMinutes,
+    playerTime,
   };
 
   return (
