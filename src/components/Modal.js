@@ -5,8 +5,7 @@ import { GameContext } from './Context';
 
 export default function Modal() {
   const data = useContext(GameContext);
-
-
+  
   const variant = {
     hidden: {
       opacity: 0,
@@ -22,25 +21,12 @@ export default function Modal() {
   const assignLevel = (num) => {
     data.setSelectLevel(num);
     data.setOpenWindow(null);
+    data.isStartGame(false);
+    data.setTime(data.timer);
   }
 
   const closeVinWindow = () => {
     data.setSelectLevel(0);
-    data.setOpenVinWindow(null);
-  }
-
-  const nextLevel = ({ title, count }) => {
-    if (count === 4) {
-      data.setSelectLevel({ title: 2, count: 6 });
-      data.isStartGame(false);
-      data.setTime(data.timer);
-    }
-    if (count === 6) {
-      data.setSelectLevel({ title: 3, count: 9 });
-      data.isStartGame(false);
-      data.setTime(data.timer);
-    }
-
     data.setOpenVinWindow(null);
   }
 
@@ -50,7 +36,10 @@ export default function Modal() {
         (data.openWindow || data.openVinWindow) && (
           <motion.div
             className='overlay'
-            onClick={() => data.setOpenWindow(null)}
+            onClick={() => {
+              data.openWindow && data.setOpenWindow(null);
+              data.openVinWindow && closeVinWindow();
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -94,12 +83,8 @@ export default function Modal() {
                 <>
                   <h3 className='title'>Привітання</h3>
                   <div className="vin">
-                    <p className="vin__text">Вітаю, ти виграв!!!</p>
+                    <p className="vin__text">Вітаю, в тебе чудова пам'ять. Ти пройшов цей рівень!!!</p>
                     <ul className='vin__items'>
-                      <li
-                        className="vin__nextlevel"
-                        onClick={() => nextLevel(data.selectLevel)}
-                      >Слідуючий рівень</li>
                       <li
                         className="vin__close"
                         onClick={() => closeVinWindow()}

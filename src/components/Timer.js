@@ -1,14 +1,15 @@
 import React, { useContext } from "react"
-import { GameContext } from './Context';
+// import { GameContext } from './Context';
 
-export default function Timer() {
-  const data = useContext(GameContext);
+export default function Timer({ minutes, seconds }) {
+  // const data = useContext(GameContext);
+
 
   return (
     <div className='timer'>
-      {data.minutes > 9 ? data.minutes : `0${data.minutes}`}
+      {minutes > 9 ? minutes : `0${minutes}`}
       :
-      {data.seconds > 9 ? data.seconds : `0${data.seconds}`}
+      {seconds > 9 ? seconds : `0${seconds}`}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import useArray from '../hooks/useArray';
 import useTimer from '../hooks/useTimer';
+import useGameTimer from './../hooks/useGameTimer';
 
 export const GameContext = createContext();
 
@@ -12,12 +13,16 @@ const Context = (props) => {
   const [startGame, isStartGame] = useState(false);
   const [time, setTime] = useState(timer);
   const [minutes, seconds] = useTimer(selectLevel, time, setTime);
+
   const [compArr, setCompArr, userArr, setUserArr, allUniquePicture] = useArray(selectLevel.count);
-  
+
   const [currentCart, setCurrentCart] = useState(null);
   const [currentFloor, setCurrentFloor] = useState(null);
   const [result, setResult] = useState([]);
   const [area, setArea] = useState(null);
+  const [gameMinutes, setGameMinutes] = useGameTimer(startGame, openVinWindow);
+
+  // console.log(startGame);
 
   useEffect(() => {
     if (minutes === 0 && seconds === 0) { isStartGame(true) }
@@ -119,6 +124,8 @@ const Context = (props) => {
     dragStart,
     dropHandler,
     allUniquePicture,
+    gameMinutes,
+    setGameMinutes,
   };
 
   return (

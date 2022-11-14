@@ -12,9 +12,8 @@ export default function GameField() {
   return (
     <>
       <h2>Рівень складності {data.selectLevel.title}</h2>
-      {
-        data.selectLevel.title && <Timer />
-      }
+      {data.selectLevel.title && <Timer minutes={data.minutes} seconds={data.seconds} />}
+      {data.startGame && <Timer minutes={data.gameMinutes} seconds={data.setGameMinutes} />}
       <div className='field'>
         <GameFieldInner />
       </div>

@@ -62,7 +62,8 @@
 }
 
 .vin__close,
-.vin__nextlevel {
+.vin__nextlevel,
+.vin__thislevel {
   cursor: pointer;
 
   &:hover {
