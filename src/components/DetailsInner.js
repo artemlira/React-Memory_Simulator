@@ -50,7 +50,7 @@ export default function DetailsInner() {
 
   return (
     <ul className='details__items' style={generateTemplate()}>
-      {data.compArr.map((item, index) =>
+      {data.allUniquePicture.map((item, index) =>
         <motion.li
           key={index}
           className='details__item'

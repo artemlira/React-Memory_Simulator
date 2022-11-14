@@ -1,10 +1,14 @@
+import { useState, useEffect } from 'react';
 import { pics } from '../components/ImagesDB';
+
 
 export default function useArray(n) {
 
-  let arr = [];
-  let userLevel = [];
+  const [gameLevel, setGameLevel] = useState([]);
+  const [gameFloor, setGameFloor] = useState([]);
+  const [allUniquePicture, setAllUniquePicture] = useState([]);
   let uniqueSetNumbers = [];
+
 
   for (let i = 0; uniqueSetNumbers.length < n; i++) {
     let num = Math.floor(Math.random() * pics.length);
@@ -13,15 +17,30 @@ export default function useArray(n) {
     }
   }
 
-  uniqueSetNumbers.forEach((item, index) => {
-    let c = { id: index, elem: pics[item] };
-    arr.push(c);
-  });
-
-  for (let i = 0; i < n; i++) {
-    let c = { id: i, elem: null };
-    userLevel.push(c);
+  const sortable = (a, b) => {
+    if (a > b) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
 
-  return [arr, userLevel];
+  useEffect(() => {
+
+    setGameLevel(uniqueSetNumbers.map((item, index) => {
+      return { id: index, elem: pics[item] };
+    }));
+
+    setGameFloor(uniqueSetNumbers.map((item, index) => {
+      return { id: index, elem: null };
+    }));
+
+    setAllUniquePicture(uniqueSetNumbers.sort(sortable).map((item, index) => {
+      return { id: index, elem: pics[item] }
+    }));
+
+  }, [n]);
+
+
+  return [gameLevel, setGameLevel, gameFloor, setGameFloor, allUniquePicture];
 }
