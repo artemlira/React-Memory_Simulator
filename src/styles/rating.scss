@@ -1,0 +1,42 @@
+@use 'variables.scss' as v;
+@use 'mixins.scss' as m;
+@use 'functions.scss' as f;
+
+.rating {
+
+  &__head {
+    margin: 10px;
+  }
+
+  // .raiting__items
+  &__items {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+
+  // .rating__item
+  &__item {
+    background-color: #c370fc;
+    list-style: inside;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+
+    span {
+      padding: 10px 20px;
+    }
+  }
+
+}
+
+// .level {
+
+//   // .level__title
+//   // &__title {}
+
+//   // .level__time
+//   // &__time {}
+
+// }

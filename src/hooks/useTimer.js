@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function useTimer(selectLevel, time, setTime) {
+export default function useTimer(selectLevel, t) {
+  const [time, setTime] = useState(t);
+
 
   const minutes = Math.floor(time / 60);
   const seconds = time - minutes * 60;
@@ -15,6 +17,6 @@ export default function useTimer(selectLevel, time, setTime) {
   }, [selectLevel]);
 
 
-  return [minutes, seconds, setTime];
+  return [minutes, seconds];
 
 }

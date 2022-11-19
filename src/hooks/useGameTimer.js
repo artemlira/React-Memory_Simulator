@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function useGameTimer(startGame, openVinWindow, isStartGame, setPlayerTime) {
+export default function useGameTimer(startGame, isStartGame, final) {
 
   const [time, setTime] = useState(0);
 
@@ -18,10 +18,9 @@ export default function useGameTimer(startGame, openVinWindow, isStartGame, setP
 
   useEffect(() => {
     isStartGame(false);
-    setPlayerTime(time);
     clearInterval(interval);
     setTime(0);
-  }, [openVinWindow]);
+  }, [final]);
 
   return [minutes, seconds];
 }

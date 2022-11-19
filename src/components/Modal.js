@@ -83,7 +83,7 @@ export default function Modal() {
                 <>
                   <h3 className='title'>Привітання</h3>
                   <div className="vin">
-                    <p className="vin__text">Вітаю, в тебе чудова пам'ять. Ти пройшов цей рівень за {data.playerTime} секунд!!!</p>
+                    <p className="vin__text">Вітаю, в тебе чудова пам'ять. Ти пройшов цей рівень за {data.gameMinutes} мінут {data.gameSeconds} секунд!!!</p>
                     <ul className='vin__items'>
                       <li
                         className="vin__close"
