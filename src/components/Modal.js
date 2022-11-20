@@ -22,7 +22,7 @@ export default function Modal() {
     data.setSelectLevel(num);
     data.setOpenWindow(null);
     data.isStartGame(false);
-    data.setTime(data.timer);
+    data.setFinal(null);
   }
 
   const closeVinWindow = () => {
@@ -83,7 +83,7 @@ export default function Modal() {
                 <>
                   <h3 className='title'>Привітання</h3>
                   <div className="vin">
-                    <p className="vin__text">Вітаю, в тебе чудова пам'ять. Ти пройшов цей рівень за {data.gameMinutes} мінут {data.gameSeconds} секунд!!!</p>
+                    <p className="vin__text">Вітаю, в тебе чудова пам'ять!!!</p>
                     <ul className='vin__items'>
                       <li
                         className="vin__close"

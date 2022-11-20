@@ -39,6 +39,7 @@ body {
   width: 90%;
   margin: 15px auto;
   max-width: 800px;
+  overflow: auto;
 }
 
 .menu {
@@ -120,4 +121,3 @@ body {
 .button:hover {
   background-image: linear-gradient(to top, rgba(224, 252, 165, 1) 23.96%, rgba(77, 208, 28, 1) 86.44%);
 }
-

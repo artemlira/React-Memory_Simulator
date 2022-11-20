@@ -1,22 +1,17 @@
 import React, { useState, useEffect, createContext } from 'react';
 import useArray from '../hooks/useArray';
-import useTimer from '../hooks/useTimer';
 import useGameTimer from './../hooks/useGameTimer';
 
 export const GameContext = createContext();
 
 
 const Context = (props) => {
-  const [timerRange, setTimerRange] = useState();
   const [selectLevel, setSelectLevel] = useState({});
   const [openWindow, setOpenWindow] = useState(null);
   const [openVinWindow, setOpenVinWindow] = useState(null);
   const [startGame, isStartGame] = useState(false);
-  // const [time, setTime] = useState(timerRange);
-  // const [minutes, seconds] = useTimer(selectLevel, timerRange);
   const [gameRating, setGameRating] = useState([]);
-  // console.log(timerRange);
-  // console.log(time);
+
   const [compArr, setCompArr, userArr, setUserArr, allUniquePicture] = useArray(selectLevel.count);
 
   const [currentCart, setCurrentCart] = useState(null);
@@ -27,10 +22,6 @@ const Context = (props) => {
 
   const [gameMinutes, gameSeconds] = useGameTimer(startGame, isStartGame, final);
 
-
-  // useEffect(() => {
-  //   if (minutes === 0 && seconds === 0) { isStartGame(true) }
-  // }, [minutes, seconds]);
 
   useEffect(() => {
     if (result.length > 0) {
@@ -134,7 +125,7 @@ const Context = (props) => {
   }, [gameRating]);
 
   //Settings
-  // const [timerRange, setTimerRange] = useState();
+  const [timerRange, setTimerRange] = useState();
   const [language, setLanguage] = useState(null);
 
   useEffect(() => {
@@ -169,10 +160,7 @@ const Context = (props) => {
     userArr, setUserArr,
     compArr, setCompArr,
     openVinWindow, setOpenVinWindow,
-    // time,
-    // setTime,
     startGame, isStartGame,
-    // timer,
     currentCart, setCurrentCart,
     currentFloor, setCurrentFloor,
     result, setResult,
@@ -182,7 +170,6 @@ const Context = (props) => {
     dragStart,
     dropHandler,
     allUniquePicture,
-    // minutes, seconds,
     gameMinutes,
     gameSeconds,
     renderGameReting,
@@ -190,7 +177,7 @@ const Context = (props) => {
     gameRating,
     timerRange, setTimerRange,
     language, setLanguage,
-
+    final, setFinal,
   };
 
   return (
