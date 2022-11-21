@@ -5,6 +5,7 @@ import DetailsInner from './DetailsInner';
 import Timer from './Timer';
 import { GameContext } from './Context';
 import useTimer from '../hooks/useTimer';
+import { TranslateDB } from './TranslateDB';
 
 export default function GameField() {
   const data = useContext(GameContext);
@@ -18,7 +19,7 @@ export default function GameField() {
 
   return (
     <>
-      <h2>Рівень складності {data.selectLevel.title}</h2>
+      <h2>{data.language && TranslateDB[data.language].gameFieldTitle} {data.selectLevel.title}</h2>
       {(data.selectLevel.title && !data.startGame) && <Timer minutes={minutes} seconds={seconds} />}
       {data.startGame && <Timer minutes={data.gameMinutes} seconds={data.gameSeconds} />}
       <div className='field'>

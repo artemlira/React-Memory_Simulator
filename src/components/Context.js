@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import useArray from '../hooks/useArray';
 import useGameTimer from './../hooks/useGameTimer';
+import { TranslateDB } from './TranslateDB';
 
 export const GameContext = createContext();
 
@@ -21,6 +22,8 @@ const Context = (props) => {
   const [final, setFinal] = useState(null);
 
   const [gameMinutes, gameSeconds] = useGameTimer(startGame, isStartGame, final);
+
+  const [language, setLanguage] = useState(null);
 
 
   useEffect(() => {
@@ -104,7 +107,7 @@ const Context = (props) => {
     if (final) {
       setGameRating([...gameRating, {
         id: 1,
-        title: `Рівень ${selectLevel.title}`,
+        title: `${TranslateDB[language].ratingLevel} ${selectLevel.title}`,
         time: `${gameMinutes > 9 ? gameMinutes : '0' + gameMinutes}:${gameSeconds > 9 ? gameSeconds : '0' + gameSeconds}`
       }])
     }
@@ -126,7 +129,7 @@ const Context = (props) => {
 
   //Settings
   const [timerRange, setTimerRange] = useState();
-  const [language, setLanguage] = useState(null);
+  // const [language, setLanguage] = useState(null);
 
   useEffect(() => {
 

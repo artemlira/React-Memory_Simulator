@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import '../styles/modal.scss';
 import { motion, AnimatePresence } from "framer-motion"
 import { GameContext } from './Context';
+import { TranslateDB } from './TranslateDB';
 
 export default function Modal() {
   const data = useContext(GameContext);
@@ -63,32 +64,32 @@ export default function Modal() {
               {!data.openVinWindow ?
                 (
                   <>
-                    <h3 className='title'>Рівень складності</h3>
+                    <h3 className='title'>{data.language && TranslateDB[data.language].modalTitle}</h3>
                     <ul className='level__items'>
                       <li
                         className='level__item'
                         onClick={() => assignLevel({ title: 1, count: 4 })}
-                      >Легкий 2 x 2</li>
+                      >{data.language && TranslateDB[data.language].modalLevel1} 2 x 2</li>
                       <li
                         className='level__item'
                         onClick={() => assignLevel({ title: 2, count: 6 })}
-                      >Середній 3 x 2</li>
+                      >{data.language && TranslateDB[data.language].modalLevel2} 3 x 2</li>
                       <li
                         className='level__item'
                         onClick={() => assignLevel({ title: 3, count: 9 })}
-                      >Складний 3 x 3</li>
+                      >{data.language && TranslateDB[data.language].modalLevel3} 3 x 3</li>
                     </ul>
                   </>
                 ) :
                 <>
-                  <h3 className='title'>Привітання</h3>
+                  <h3 className='title'>{data.language && TranslateDB[data.language].modalGreetingTitle}</h3>
                   <div className="vin">
-                    <p className="vin__text">Вітаю, в тебе чудова пам'ять!!!</p>
+                    <p className="vin__text">{data.language && TranslateDB[data.language].modalGreetingText}</p>
                     <ul className='vin__items'>
                       <li
                         className="vin__close"
                         onClick={() => closeVinWindow()}
-                      >Закрити</li>
+                      >{data.language && TranslateDB[data.language].modalGreetingClose}</li>
                     </ul>
                   </div>
                 </>

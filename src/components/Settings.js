@@ -13,7 +13,7 @@ export default function Settings() {
       <h2>{data.language && TranslateDB[data.language].settingsTitle}</h2>
       <div className="timeRange">
         <p>{data.language && TranslateDB[data.language].howMuchTime}</p>
-        <span>{data.timerRange} секунд</span>
+        <span>{data.timerRange} {data.language && TranslateDB[data.language].unit}</span>
         <input
           type="range"
           min='5'
@@ -24,14 +24,14 @@ export default function Settings() {
         />
       </div>
       <div className="language__setting">
-        <p>Оберіть мову:</p>
+        <p>{data.language && TranslateDB[data.language].ChoosingLanguage}</p>
         <ul className="language__items">
           <li className="language__item"
             onClick={() => data.setLanguage('en')}
-          >English</li>
+          >{data.language && TranslateDB[data.language].langEn}</li>
           <li className="language__item"
             onClick={() => data.setLanguage('ua')}
-          >Український</li>
+          >{data.language && TranslateDB[data.language].langUa}</li>
         </ul>
       </div>
 
