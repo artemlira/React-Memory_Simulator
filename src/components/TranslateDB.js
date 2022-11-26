@@ -11,6 +11,7 @@ export const TranslateDB = {
     ChoosingLanguage: 'Оберіть мову:',
     langEn: 'Англійський',
     langUa: 'Український',
+    timer: ['секунда', 'секунди', 'секунд'],
     //Menu
     menuItemSetting: 'Налаштування',
     menuItemLevel: 'Рівень',
@@ -39,6 +40,7 @@ export const TranslateDB = {
     ChoosingLanguage: 'Choose a language:',
     langEn: 'English',
     langUa: 'Ukrainian',
+    timer: ['second', 'seconds', 'seconds'],
     //Menu
     menuItemSetting: 'Setting up',
     menuItemLevel: 'Level',

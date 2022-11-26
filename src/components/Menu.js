@@ -2,28 +2,29 @@ import React, { useContext } from 'react';
 import { GameContext } from './Context';
 import { images } from './ImagesDB';
 import MenuItem from './MenuItem';
-import { TranslateDB } from './TranslateDB';
+// import { TranslateDB } from './TranslateDB';
 
 
 export default function Menu() {
   const data = useContext(GameContext);
+  const labels = { ...data.translate };
 
   return (
     <ul className='menu__items'>
       <MenuItem
         image={images[0]}
-        title={data.language && TranslateDB[data.language].menuItemSetting}
+        title={labels.menuItemSetting}
         url='/settings'
       />
 
       <MenuItem
         image={images[1]}
-        title={data.language && TranslateDB[data.language].menuItemLevel}
+        title={labels.menuItemLevel}
         url='/'
       />
       <MenuItem
         image={images[2]}
-        title={data.language && TranslateDB[data.language].menuItemRating}
+        title={labels.menuItemRating}
         url='/rating'
       />
 

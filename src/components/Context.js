@@ -130,18 +130,23 @@ const Context = (props) => {
   //Settings
   const [timerRange, setTimerRange] = useState();
   // const [language, setLanguage] = useState(null);
+  const [translate, setTranslate] = useState(null);
 
   useEffect(() => {
 
     !timerRange && setTimerRange(5);
     !language && setLanguage('ua');
+    !translate && setTranslate(TranslateDB[language]);
 
     const c = localStorage.getItem('settings');
     const l = localStorage.getItem('lang');
+    const t = JSON.parse(localStorage.getItem('translate'));
 
-    l && setLanguage(l);
     c && setTimerRange(c);
+    l && setLanguage(l);
+    t && setTranslate(t);
   }, []);
+
 
   useEffect(() => {
     if (timerRange) {
@@ -151,8 +156,39 @@ const Context = (props) => {
   }, [timerRange]);
 
   useEffect(() => {
-    language && localStorage.setItem('lang', language);
+    if (language) {
+      localStorage.setItem('lang', language);
+      localStorage.setItem('translate', JSON.stringify(TranslateDB[language]));
+    }
+
+  }, [language, translate]);
+
+  useEffect(() => {
+    if (language) {
+      let t = JSON.parse(localStorage.getItem('translate'));
+      t && setTranslate(t);
+    }
   }, [language]);
+
+  const timestampeDeclination = (time, arr) => {
+    let tmpTime = Object.assign(time);
+
+    if (tmpTime > 5 && tmpTime < 21) {
+      return `${time} ${arr[2]}`
+    }
+
+    if (tmpTime > 9) { tmpTime = tmpTime % 10 }
+    if (tmpTime === 1) {
+      return `${time} ${arr[0]}`
+    }
+    else if (tmpTime > 1 && tmpTime < 5) {
+      return `${time} ${arr[1]}`
+    }
+    else {
+      return `${time} ${arr[2]}`
+    }
+
+  }
 
 
 
@@ -180,7 +216,9 @@ const Context = (props) => {
     gameRating,
     timerRange, setTimerRange,
     language, setLanguage,
+    translate,
     final, setFinal,
+    timestampeDeclination,
   };
 
   return (

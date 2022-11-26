@@ -3,10 +3,11 @@ import Logo from '../images/logo.svg';
 import '../styles/firstscreen.scss';
 import { useHistory } from 'react-router-dom';
 import { GameContext } from './Context';
-import { TranslateDB } from './TranslateDB';
 
-export default function FirstScreen() {
+
+export default function FirstScreen({ aythentification, logIn, logOut }) {
   const data = useContext(GameContext);
+  const labels = { ...data.translate };
 
   const history = useHistory();
 
@@ -18,10 +19,20 @@ export default function FirstScreen() {
 
     <div className='first__screen'>
       <img src={Logo} alt="Logo" />
-      <button
-        className='button'
-        onClick={() => data.setOpenWindow(true)}
-      >{data.language && TranslateDB[data.language].firstScreenButton}</button>
+
+      {
+        !aythentification
+          ?
+          <button
+            className='button'
+            onClick={() => logIn()}
+          >Зайти</button>
+          :
+          <button
+            className='button'
+            onClick={() => logOut()}
+          >Вийти</button>
+      }
     </div>
   )
 }
