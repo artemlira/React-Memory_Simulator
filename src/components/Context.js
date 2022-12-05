@@ -172,27 +172,22 @@ const Context = (props) => {
   }, [language]);
 
   const timestampeDeclination = (time, arr) => {
-    if (time <= 20) {
-      if (time === 1) {
-        return `${time} ${arr[0]}`;
-      } else if (time <= 4 && time > 0) {
-        return `${time} ${arr[1]}`;
-      } else {
-        return `${time} ${arr[2]}`;
-      }
-    } else {
-      if (time % 10 >= 5 || time % 10 === 0) {
-        return `${time} ${arr[2]}`;
-      } else if (time > 20 && time % 10 === 1) {
-        return `${time} ${arr[0]}`;
-      } else if (time % 10 <= 4) {
-        return `${time} ${arr[1]}`;
-      }
+    if (arr) {
+      let cases = [2, 0, 1, 1, 1, 2];
+      return `${time} ${arr[(time % 100 > 4 && time % 100 < 20) ? 2 : cases[(time % 10 < 5) ? time % 10 : 5]]}`;
     }
   }
 
-
-
+  // const timestampeDeclination = (time, arr) => {
+  //   if (arr) {
+  //     time = Math.abs(time) % 100;
+  //     let num = time % 10;
+  //     if (time > 10 && time < 20) return `${time} ${arr[2]}`;
+  //     if (num > 1 && num < 5) return `${time} ${arr[1]}`;
+  //     if (num == 1) return `${time} ${arr[0]}`;
+  //     return `${time} ${arr[2]}`;
+  //   }
+  // }
 
   const value = {
     openWindow, setOpenWindow,
