@@ -1,7 +1,6 @@
 import React, { useContext, createRef } from 'react';
 import '../styles/settimgs.scss';
 import { GameContext } from './Context';
-// import { TranslateDB } from './TranslateDB';
 
 
 export default function Settings() {
@@ -14,8 +13,8 @@ export default function Settings() {
       <h2>{labels.settingsTitle}</h2>
       <div className="timeRange">
         <p>{labels.howMuchTime}</p>
-        <span> {data.timerRange}</span>
-        {/* <span> {data.timestampeDeclination(data.timerRange, labels.timer)}</span> */}
+        {/* <span> {data.timerRange} </span> */}
+        <span> {data.timestampeDeclination(data.timerRange, labels.timer)}</span>
         <input
           type="range"
           min='5'

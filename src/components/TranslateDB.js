@@ -4,6 +4,8 @@ export const TranslateDB = {
   'ua': {
     //FirstScreen
     firstScreenButton: 'Грати',
+    firstScreenTitleIn: 'Увійти',
+    firstScreenTitleOut: 'Вийти',
     //Settings
     settingsTitle: 'Налаштування гри',
     howMuchTime: "Скільки часу на запам'ятовування вам потрібно?",
@@ -16,6 +18,7 @@ export const TranslateDB = {
     menuItemSetting: 'Налаштування',
     menuItemLevel: 'Рівень',
     menuItemRating: 'Рейтинг',
+    menuItemHome: 'На головну',
     //Modal
     modalTitle: 'Рівень складності',
     modalLevel1: 'Легкий',
@@ -33,6 +36,8 @@ export const TranslateDB = {
   'en': {
     //FirstScreen
     firstScreenButton: 'Play',
+    firstScreenTitleIn: 'Log in',
+    firstScreenTitleOut: 'Log out',
     //Settings
     settingsTitle: 'Setting up the game',
     howMuchTime: "How much time to memorize do you need?",
@@ -45,6 +50,7 @@ export const TranslateDB = {
     menuItemSetting: 'Setting up',
     menuItemLevel: 'Level',
     menuItemRating: 'Rating',
+    menuItemHome: 'Home',
     //Modal
     modalTitle: 'Level of complexity',
     modalLevel1: 'Light',

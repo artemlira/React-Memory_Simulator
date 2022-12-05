@@ -11,6 +11,12 @@ export default function Menu() {
 
   return (
     <ul className='menu__items'>
+
+      <MenuItem
+        image={images[3]}
+        title={labels.menuItemHome}
+        url='/'
+      />
       <MenuItem
         image={images[0]}
         title={labels.menuItemSetting}
@@ -20,7 +26,7 @@ export default function Menu() {
       <MenuItem
         image={images[1]}
         title={labels.menuItemLevel}
-        url='/'
+        url='/game'
       />
       <MenuItem
         image={images[2]}

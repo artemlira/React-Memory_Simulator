@@ -5,7 +5,7 @@ import { GameContext } from './Context';
 export default function MenuItem({ image, title, url }) {
   const data = useContext(GameContext);
   const isEvent = () => {
-    if (url === '/') {
+    if (url === '/game') {
       return () => data.setOpenWindow(true)
     }
   }

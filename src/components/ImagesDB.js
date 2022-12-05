@@ -1,7 +1,8 @@
 export const images = [
   '../images/setting.svg',
   '../images/level.svg',
-  '../images/rating.svg'
+  '../images/rating.svg',
+  '../images/home.svg'
 ];
 
 export const pics = [

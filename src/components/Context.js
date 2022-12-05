@@ -106,10 +106,11 @@ const Context = (props) => {
   useEffect(() => {
     if (final) {
       setGameRating([...gameRating, {
-        id: 1,
+        id: Math.random() * 10,
         title: `${TranslateDB[language].ratingLevel} ${selectLevel.title}`,
         time: `${gameMinutes > 9 ? gameMinutes : '0' + gameMinutes}:${gameSeconds > 9 ? gameSeconds : '0' + gameSeconds}`
       }])
+      // const dataBase = firebase.database();
     }
   }, [final]);
 
@@ -171,23 +172,23 @@ const Context = (props) => {
   }, [language]);
 
   const timestampeDeclination = (time, arr) => {
-    let tmpTime = Object.assign(time);
-
-    if (tmpTime > 5 && tmpTime < 21) {
-      return `${time} ${arr[2]}`
+    if (time <= 20) {
+      if (time === 1) {
+        return `${time} ${arr[0]}`;
+      } else if (time <= 4 && time > 0) {
+        return `${time} ${arr[1]}`;
+      } else {
+        return `${time} ${arr[2]}`;
+      }
+    } else {
+      if (time % 10 >= 5 || time % 10 === 0) {
+        return `${time} ${arr[2]}`;
+      } else if (time > 20 && time % 10 === 1) {
+        return `${time} ${arr[0]}`;
+      } else if (time % 10 <= 4) {
+        return `${time} ${arr[1]}`;
+      }
     }
-
-    if (tmpTime > 9) { tmpTime = tmpTime % 10 }
-    if (tmpTime === 1) {
-      return `${time} ${arr[0]}`
-    }
-    else if (tmpTime > 1 && tmpTime < 5) {
-      return `${time} ${arr[1]}`
-    }
-    else {
-      return `${time} ${arr[2]}`
-    }
-
   }
 
 

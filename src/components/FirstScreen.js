@@ -26,12 +26,12 @@ export default function FirstScreen({ aythentification, logIn, logOut }) {
           <button
             className='button'
             onClick={() => logIn()}
-          >Зайти</button>
+          >{labels.firstScreenTitleIn}</button>
           :
           <button
             className='button'
             onClick={() => logOut()}
-          >Вийти</button>
+          >{labels.firstScreenTitleOut}</button>
       }
     </div>
   )
